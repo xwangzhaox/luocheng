@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 #
 gem 'devise'
+gem 'devise-i18n'
 
 gem 'toastr-rails'
 
@@ -41,6 +42,9 @@ gem 'chinese_pinyin'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'rails_admin-i18n'
+gem 'rails_admin_selectable'
+gem 'ckeditor'
+gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

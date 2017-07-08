@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704145846) do
+ActiveRecord::Schema.define(version: 20170707172018) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "categories_id_id"
+    t.bigint "category_id"
     t.string "title"
     t.string "en_title"
     t.string "description"
-    t.string "content"
+    t.text "content"
     t.integer "view_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categories_id_id"], name: "index_articles_on_categories_id_id"
+    t.index ["category_id"], name: "index_articles_on_category_id"
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20170704145846) do
     t.datetime "updated_at", null: false
     t.index ["en_name"], name: "index_categories_on_en_name"
     t.index ["name"], name: "index_categories_on_name"
+  end
+
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "data_fingerprint"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

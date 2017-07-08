@@ -12,5 +12,6 @@
 //
 //= require rails-ujs
 //= require toastr
+//= require ckeditor/init
 //= require turbolinks
 //= require_tree .

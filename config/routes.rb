@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :articles
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "home#index"
