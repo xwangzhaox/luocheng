@@ -1,0 +1,59 @@
+  <div class="footer">
+    <!-- container -->
+    <div class="container">
+      <div class="col-md-6 footer-left  wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        <ul>
+          <li><%= link_to "首页", "/"%></li>
+          <% get_menu.each do |m| %>
+            <li><%= link_to m.name, m.url%></li>
+          <% end %>
+        </ul>
+        <form>
+          <input type="text" placeholder="留下Email" required="">
+          <input type="submit" value="提交">
+        </form>
+      </div>
+      <div class="col-md-3 footer-middle wow bounceIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        <h3>联系方式</h3>
+        <div class="address">
+          <p>756 gt globel Place,
+            <span>CD-Road,M 07 435.</span>
+          </p>
+        </div>
+        <div class="phone">
+          <p>+1(100)2345-6789</p>
+        </div>
+      </div>
+      <div class="col-md-3 footer-right  wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        <h3><%= get_partner.title %></h3>
+        <p><%= get_partner.content.html_safe %></p>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <!-- //container -->
+  </div>
+  <div class="copyright">
+    <!-- container -->
+    <div class="container">
+      <div class="copyright-left wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        <p>Copyright &copy; 2015.Company name All rights reserved.</p>
+      </div>
+      <div class="clearfix"> </div>
+      <script type="text/javascript">
+                  $(document).ready(function() {
+                    /*
+                    var defaults = {
+                        containerID: 'toTop', // fading element id
+                      containerHoverID: 'toTopHover', // fading element hover id
+                      scrollSpeed: 1200,
+                      easingType: 'linear'
+                     };
+                    */
+                    $().UItoTop({ easingType: 'easeOutQuart' });
+                  });
+                </script>
+    <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+    </div>
+    <!-- //container -->
+  </div>

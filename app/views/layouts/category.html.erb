@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <%= csrf_meta_tags %>
+
+    <%= javascript_include_tag params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag params[:controller], 'data-turbolinks-track' => true  %>
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<script>
+			new WOW().init();
+		</script>
+		<!--start-smoth-scrolling-->
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+		</script>
+    <!--start-smoth-scrolling-->
+  </head>
+<body>
+	<!-- banner -->
+	<%= render :partial => "shared/header" %>
+	<!-- //banner -->
+	<%= yield %>
+	<!-- footer -->
+	<%= render :partial => "shared/footer" %>
+	<!-- //footer -->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- banner -->
+  <div id="home" class="banner a-banner">
+    <!-- container -->
+    <div class="container">
+      <div class="header">
+        <div class="head-logo">
+        <a href="index.html"><%= image_tag "logo.png" %></a>
+        </div>
+        <div class="top-nav">
+          <span class="menu"><%= image_tag "menu.png" %></span>
+          <ul class="nav1">
+            <li class="hvr-sweep-to-bottom active">
+              <%= link_to root_path do %>
+                首页<i><%= image_tag "nav-but1.png" %></i>
+              <% end %>
+            </li>
+            <% get_menu.each do |m| %>
+              <li class="hvr-sweep-to-bottom">
+                <%= link_to m.url do %>
+                  <%= m.name %><i><%= image_tag m.icon %></i>
+                <% end %>
+              </li>
+            <% end %>
+            <div class="clearfix"> </div>
+          </ul>
+          <!-- script-for-menu -->
+               <script>
+                 $( "span.menu" ).click(function() {
+                 $( "ul.nav1" ).slideToggle( 300, function() {
+                 // Animation complete.
+                  });
+                 });
+              </script>
+            <!-- /script-for-menu -->
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+  <!-- //banner -->

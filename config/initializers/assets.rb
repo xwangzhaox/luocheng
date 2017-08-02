@@ -9,6 +9,9 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w(ckeditor/config.js)
 
+Rails.application.config.assets.precompile += %w(home.js articles.js categories.js easing.js jquery.swipebox.min.js move-top.js responsiveslides.min.js wow.min.js)
+Rails.application.config.assets.precompile += %w(home.css articles.css categories.css animate.css swipebox.css)
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

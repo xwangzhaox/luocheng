@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707172018) do
+ActiveRecord::Schema.define(version: 20170723054228) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "category_id"
@@ -21,7 +21,27 @@ ActiveRecord::Schema.define(version: 20170707172018) do
     t.integer "view_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "has_banner", default: false
+    t.string "banner_url"
     t.index ["category_id"], name: "index_articles_on_category_id"
+  end
+
+  create_table "base_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "home_banner_1_title"
+    t.string "home_banner_1_description"
+    t.string "home_banner_2_title"
+    t.string "home_banner_2_description"
+    t.string "home_banner_3_title"
+    t.string "home_banner_3_description"
+    t.string "home_center_title"
+    t.string "home_center_description"
+    t.text "home_center_content"
+    t.string "location"
+    t.string "phone"
+    t.string "footer_text"
+    t.string "copyright"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -29,6 +49,8 @@ ActiveRecord::Schema.define(version: 20170707172018) do
     t.string "en_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.text "content"
     t.index ["en_name"], name: "index_categories_on_en_name"
     t.index ["name"], name: "index_categories_on_name"
   end
@@ -44,6 +66,26 @@ ActiveRecord::Schema.define(version: 20170707172018) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "wechat"
+    t.text "message"
+    t.string "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "menu_type"
+    t.integer "type_value"
+    t.string "name"
+    t.string "en_name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

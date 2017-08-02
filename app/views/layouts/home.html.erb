@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InitCms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <%= csrf_meta_tags %>
+
+    <%= javascript_include_tag params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag params[:controller], 'data-turbolinks-track' => true  %>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script>
+       new WOW().init();
+    </script>
+    <!--start-smoth-scrolling-->
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){
+          event.preventDefault();
+          $('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+        });
+      });
+    </script>
+    <!--start-smoth-scrolling-->
+  </head>
+
+  <body>
+  <!-- banner -->
+  <div id="home" class="banner a-banner">
+    <!-- container -->
+    <div class="container">
+      <div class="header">
+        <div class="head-logo">
+        <a href="index.html"><%= image_tag "logo.png" %></a>
+        </div>
+        <div class="top-nav">
+          <span class="menu"><%= image_tag "menu.png" %></span>
+          <ul class="nav1">
+            <li class="hvr-sweep-to-bottom active">
+              <%= link_to root_path do %>
+                首页<i><%= image_tag "nav-but1.png" %></i>
+              <% end %>
+            </li>
+            <% get_menu.each do |m| %>
+              <li class="hvr-sweep-to-bottom">
+                <%= link_to m.url do %>
+                  <%= m.name %><i><%= image_tag m.icon %></i>
+                <% end %>
+              </li>
+            <% end %>
+            <div class="clearfix"> </div>
+          </ul>
+          <!-- script-for-menu -->
+               <script>
+                 $( "span.menu" ).click(function() {
+                 $( "ul.nav1" ).slideToggle( 300, function() {
+                 // Animation complete.
+                  });
+                 });
+              </script>
+            <!-- /script-for-menu -->
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+    <!-- //container -->
+    <div class="container">
+        <%= javascript_include_tag "responsiveslides.min" %>
+           <script>
+            // You can also use "$(window).load(function() {"
+            $(function () {
+              // Slideshow 4
+              $("#slider3").responsiveSlides({
+              auto: true,
+              pager: true,
+              nav: false,
+              speed: 500,
+              namespace: "callbacks",
+              before: function () {
+                $('.events').append("<li>before event fired.</li>");
+              },
+              after: function () {
+                $('.events').append("<li>after event fired.</li>");
+              }
+              });
+
+            });
+            </script>
+      <div  id="top" class="callbacks_container">
+        <ul class="rslides" id="slider3">
+          <li>
+            <div class="banner-info">
+                <h2><%= @settings.home_banner_1_title.html_safe %></h2>
+                <div class="line"> </div>
+                <p><%= @settings.home_banner_1_description %></p>
+            </div>
+          </li>
+          <li>
+            <div class="banner-info">
+                <h2><%= @settings.home_banner_2_title.html_safe %></h2>
+                <div class="line"> </div>
+                <p><%= @settings.home_banner_2_description %></p>
+            </div>
+          </li>
+          <li>
+            <div class="banner-info">
+                <h2><%= @settings.home_banner_3_title.html_safe %></h2>
+                <div class="line"> </div>
+                <p><%= @settings.home_banner_3_description %></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- //banner -->
+  <!-- banner-bottom -->
+  <div class="banner-bottom">
+    <!-- container -->
+    <div class="container">
+      <div class="banner-bottom-grids">
+        <div class="col-md-7 banner-bottom-grid-text">
+          <div class="jumbotron banner-bottom-left wow fadeInLeft animated" data-wow-delay="0.5s" style="visibility: visible; -webkit-animation-delay: 0.5s;  ">
+            <h3><%= @about.title %></h3>
+            <h5><%= @about.description %></h5>
+            <p><%= @about.content[0..260].html_safe %>...</p>
+            <div class="see-button">
+              <%= link_to "更多", "/news/about", :class => "btn btn-primary btn-lg see-button hvr-shutter-out-horizontal" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 banner-bottom-right wow fadeInRight animated" data-wow-delay="0.5s" style="visibility: visible; -webkit-animation-delay: 0.5s;">
+          <%= image_tag "2.jpg" %>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+    <!-- //container -->
+  </div>
+  <!-- //banner-bottom -->
+  <!-- specialty -->
+  <div class="specialty">
+    <!-- container -->
+    <div class="container">
+      <div class="col-md-5 specialty-info wow fadeInLeft animated" data-wow-delay="0.5s" style="visibility: visible; -webkit-animation-delay: 0.5s;">
+        <h3>行业痛点</h3>
+        <h5>当前行业内痛点突出，针对这些痛点，我们定制化的产品才得以在行业内贡献突出</h5>
+        <p>    1-签证材料不充分：申请材料准备不充分，无法说服签证官相信孕妇赴美目的，因此签证材料的充分准备是实现赴美生子的重要基础材料；
+            2-入关：孕妈妈入境美国海关及边境保卫局时欺骗检察官，否定或不承认怀孕事实，检察官将有权利将入境者驱逐出境；
+            3-月子中心及待产地点的法律风险：孕妇在美待产需选择住宅性质的居住场地，不能选择商业办公或公寓等地址作为待产地址，否则面临被举报遣返风险；
+            4-医生与医院风险：美国医疗体制与中国大为不同，孕妇要先联系医生集团，选择适合的医生后，再选择医院。孕妇选择医生需要提前预定，必须口碑较好的医生在孕妇临床时没有时间，因此孕妇通常在出发前1个月内确定人选，抵达美国后进行第一次产检，若需要可以更换医生。
+        </p>
+        <div class="see-button">
+          <%= link_to "更多", "/fu-mei-sheng-zi", :class => "btn btn-primary btn-lg see-button hvr-shutter-out-horizontal specialty-button" %>
+        </div>
+      </div>
+      <div class="col-md-7 specialty-grids">
+        <div class="specialty-grids-top">
+          <div class="col-md-6 service-box wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+            <figure class="icon">
+              <%= image_tag "hotel.png" %>
+            </figure>
+            <h5>签证材料不充分</h5>
+            <p>待产中心介绍1-2-3：室外-室内-配置</p>
+          </div>
+          <div class="col-md-6 service-box wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+            <figure class="icon">
+              <%= image_tag "eat.png" %>
+            </figure>
+            <h5>入关</h5>
+            <p>待产中心饮食标准</p>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="specialty-grids-top">
+          <div class="col-md-6 service-box wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+            <figure class="icon">
+              <%= image_tag "playing.png" %>
+            </figure>
+            <h5>月子中心及待产地点的法律风险</h5>
+            <p>待产文娱活动：风景-人文-教育等</p>
+          </div>
+          <div class="col-md-6 service-box wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+            <figure class="icon">
+              <%= image_tag "check.png" %>
+            </figure>
+            <h5>医生与医院风险</h5>
+            <p>协助与妈妈选择医生和医院，陪护产检，更新电子档案，分享至家庭</p>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <!-- //container -->
+  </div>
+  <!-- //specialty -->
+    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+  <!-- testimonials -->
+  <div class="testimonials">
+    <div class="container">
+      <div class="testimonial-nfo wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        <h3><%= @settings.home_center_title %></h3>
+        <h5><%= @settings.home_center_description.html_safe %></h5>
+      </div>
+      <div class="testimonial-grids wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+        <div class="testimonial-grid">
+          <p><span>"</span> <%= @settings.home_center_content %> <span> "</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //testimonials -->
+  <!-- news -->
+  <div class="news">
+    <div class="container">
+      <div class="news-text">
+        <h3>最新政策解读</h3>
+        <h5><%= @news.description %></h5>
+      </div>
+      <div class="news-grids">
+        <% @recommend_news.each do |news| %>
+          <div class="col-md-3 news-grid wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+            <%= link_to article_path(news.en_title) do %>
+              <h4><%= news.title %></h4>
+            <% end %>
+            <span><%= news.created_at.strftime("%Y %m-%d") %></span>
+            <%= image_tag news.banner_url %>
+            <div class="news-info">
+              <p><%= news.no_tag_content[0..80] %>...</p>
+            </div>
+          </div>
+        <% end %>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+  <!-- //news -->
+  <!-- footer -->
+  <%= render :partial => "shared/footer" %>
+  <!-- //footer -->
+  </body>
+</html>

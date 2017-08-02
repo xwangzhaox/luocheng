@@ -7,11 +7,20 @@ zh-CN:
   activerecord:
     models:
       user: "用户"
+      article: "文章"
+      category: "分类"
+      menu: "目录"
+      comment: "留言"
     attributes:
       user:
         name: "名字"
         login: "用户名"
         email: "Email"
+      comment:
+        name: "姓名"
+        phone: "电话"
+        wechat: "微信号"
+        message: "留言"
     errors:
       models:
         user: 用户

@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
-  resources :articles
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "home#index"
+
+  post "home/new_comment"
+
+  get 'news/:en_name', to: 'articles#show', :as => :article
+  get 'news', to: 'articles#index'
+
+  resources :categories, :only => [:show]
+  resources :articles, :only => [:index, :show]
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount Ckeditor::Engine => '/ckeditor'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   devise_for :users, controllers: {
@@ -10,4 +17,5 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+  get ':en_name', to: 'categories#show'
 end

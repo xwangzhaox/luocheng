@@ -1,37 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="blog">
+  <div class="container">
+    <div class="single-inline wow fadeInLeft animated animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+      <% @articles.each do |article| %>
+        <div class="blog-to">
+          <div class="blog-top">
+            <div class="blog-left">
+              <b><%= article.created_at.strftime("%d") %></b>
+              <span><%= article.created_at.strftime("%m") %>月</span>
+            </div>
+            <div class="top-blog">
+              <%= link_to article.title, article_path(article.en_title), :class => "fast" %>
+              <p class="sed"><%= article.description %></p>
+              <%= link_to "查看更多", article_path(article.en_title), :class => "more" %>
 
-<h1>Articles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Title</th>
-      <th>En title</th>
-      <th>Description</th>
-      <th>Content</th>
-      <th>View count</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.category_id %></td>
-        <td><%= article.title %></td>
-        <td><%= article.en_title %></td>
-        <td><%= article.description %></td>
-        <td><%= article.content %></td>
-        <td><%= article.view_count %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <nav>
+      <%= will_paginate @collection, renderer: BootstrapPagination::Rails, :previous_label=>"上一页", :next_label=>"下一页" %>
+    </nav>
+  </div>
+</div>
